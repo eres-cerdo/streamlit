@@ -1,23 +1,28 @@
+# streamlit_app.py
+
 import streamlit as st
-import pandas as pd
+from google.oauth2 import service_account
+from google.cloud import bigquery
 
-# Set the title of the web app
-st.title("CSV File Uploader")
+# Create API client.
+credentials = service_account.Credentials.from_service_account_info(
+    st.secrets["gcp_service_account"]
+)
+client = bigquery.Client(credentials=credentials)
 
-# Create a file uploader and prompt the user to upload a CSV file
-csv_file = st.file_uploader("Upload a CSV file", type=["csv"])
+# Perform query.
+# Uses st.cache_data to only rerun when the query changes or after 10 min.
+@st.cache_data(ttl=600)
+def run_query(query):
+    query_job = client.query(query)
+    rows_raw = query_job.result()
+    # Convert to list of dicts. Required for st.cache_data to hash the return value.
+    rows = [dict(row) for row in rows_raw]
+    return rows
 
-# If the user has uploaded a CSV file
-if csv_file is not None:
-    # Load the CSV file into a Pandas dataframe
-    df = pd.read_csv(csv_file)
-    # Display the dataframe in the Streamlit app
-    st.write(df)
-    
-    # Add a button to download the CSV file
-    st.download_button(
-        label="Download CSV",
-        data=df.to_csv().encode("utf-8"),
-        file_name="my_csv_file.csv",
-        mime="text/csv"
-    )
+rows = run_query("SELECT word FROM `bigquery-public-data.samples.shakespeare` LIMIT 10")
+
+# Print results.
+st.write("Some wise words from Shakespeare:")
+for row in rows:
+    st.write("✍️ " + row['word'])
