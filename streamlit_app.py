@@ -1,4 +1,3 @@
-# streamlit_app.py
 import streamlit as st
 from google.oauth2 import service_account
 from google.cloud import bigquery
@@ -9,13 +8,12 @@ credentials = service_account.Credentials.from_service_account_info(
 )
 client = bigquery.Client(credentials=credentials)
 
-
 options = ["France", "United Kingdom"]
 selected_option = st.selectbox("Select a country", options)
 
 st.write("You selected:", selected_option)
 
-if selected_country:
+if selected_option:
     # Perform query.
     # Uses st.cache_data to only rerun when the query changes or after 10 min.
     @st.cache_data(ttl=600)
@@ -26,8 +24,7 @@ if selected_country:
         rows = [dict(row) for row in rows_raw]
         return rows
 
-    rows = run_query("SELECT sum(Quantity * UnitPrice) as GMV FROM `my-data-warehouse-385605.sample_data.ecommerce` WHERE country = '{country_options[selected_country]}'")
+    rows = run_query(f"SELECT SUM(Quantity * UnitPrice) as GMV FROM `my-data-warehouse-385605.sample_data.ecommerce` WHERE country = '{selected_option}'")
 
     # Print results.
     st.write(rows)
-
