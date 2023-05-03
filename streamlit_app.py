@@ -1,5 +1,8 @@
 # streamlit_app.py
-
+pip install \
+    google-api-python-client~=2.85.0 \
+    google-auth-oauthlib~=1.0.0 \
+    google-auth-httplib2~=0.1.0
 import streamlit as st
 from google.oauth2 import service_account
 from google.cloud import bigquery
