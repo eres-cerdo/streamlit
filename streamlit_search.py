@@ -14,10 +14,21 @@ def search_on_baidu(query):
     search_url = f"https://www.baidu.com/s?wd={query}"
     return search_url
 
+# Open all search result links
+def open_all_links():
+    query = st.session_state.search_query
+    if query:
+        google_url = search_on_google(query)
+        taobao_url = search_on_taobao(query)
+        baidu_url = search_on_baidu(query)
+        webbrowser.open_new_tab(google_url)
+        webbrowser.open_new_tab(taobao_url)
+        webbrowser.open_new_tab(baidu_url)
+
 # Streamlit app
 def main():
     st.title("Search App")
-    query = st.text_input("Enter your search term:")
+    query = st.text_input("Enter your search term:", key="search_query")
     if st.button("Search"):
         if query:
             google_url = search_on_google(query)
@@ -35,8 +46,7 @@ def main():
             st.write(f"Google Search URL: {google_url}")
             st.write(f"Taobao Search URL: {taobao_url}")
             st.write(f"Baidu Search URL: {baidu_url}")
-        else:
-            st.warning("Please enter a search term.")
+            st.button("Open All Links", on_click=open_all_links)
 
 if __name__ == "__main__":
     main()
