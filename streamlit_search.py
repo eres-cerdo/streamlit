@@ -14,14 +14,6 @@ def search_on_baidu(query):
     search_url = f"https://www.baidu.com/s?wd={query}"
     return search_url
 
-def search_on_amazon(query):
-    search_url = f"https://www.amazon.com/s?k={query}"
-    return search_url
-
-def search_on_ebay(query):
-    search_url = f"https://www.ebay.com/sch/i.html?_nkw={query}"
-    return search_url
-
 # Open all search result links
 def open_all_links():
     query = st.session_state.search_query
@@ -29,13 +21,9 @@ def open_all_links():
         google_url = search_on_google(query)
         taobao_url = search_on_taobao(query)
         baidu_url = search_on_baidu(query)
-        amazon_url = search_on_amazon(query)
-        ebay_url = search_on_ebay(query)
         webbrowser.open(google_url, new=2)
         webbrowser.open(taobao_url, new=2)
         webbrowser.open(baidu_url, new=2)
-        webbrowser.open(amazon_url, new=2)
-        webbrowser.open(ebay_url, new=2)
 
 # Streamlit app
 def main():
@@ -46,8 +34,6 @@ def main():
             google_url = search_on_google(query)
             taobao_url = search_on_taobao(query)
             baidu_url = search_on_baidu(query)
-            amazon_url = search_on_amazon(query)
-            ebay_url = search_on_ebay(query)
             html_string = f'''
                 <h2 style="font-size: 24px; color: green;">Google Search:</h2>
                 <a href="{google_url}" target="_blank" style="font-size: 18px;">Open Google Search Results</a>
@@ -55,11 +41,12 @@ def main():
                 <a href="{taobao_url}" target="_blank" style="font-size: 18px;">Open Taobao Search Results</a>
                 <h2 style="font-size: 24px; color: green;">Baidu Search:</h2>
                 <a href="{baidu_url}" target="_blank" style="font-size: 18px;">Open Baidu Search Results</a>
-                <h2 style="font-size: 24px; color: green;">Amazon Search:</h2>
-                <a href="{amazon_url}" target="_blank" style="font-size: 18px;">Open Amazon Search Results</a>
-                <h2 style="font-size: 24px; color: green;">eBay Search:</h2>
-                <a href="{ebay_url}" target="_blank" style="font-size: 18px;">Open eBay Search Results</a>
             '''
             html(html_string, height=600)
             st.write(f"Google Search URL: {google_url}")
-            st.write(f"Taobao Search URL: {taobao
+            st.write(f"Taobao Search URL: {taobao_url}")
+            st.write(f"Baidu Search URL: {baidu_url}")
+            st.button("Open All Links", on_click=open_all_links)
+
+if __name__ == "__main__":
+    main()
