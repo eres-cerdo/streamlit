@@ -35,6 +35,7 @@ def main():
             taobao_url = search_on_taobao(query)
             baidu_url = search_on_baidu(query)
             html_string = f'''
+                st.button("Open All Links", on_click=open_all_links)
                 <h2 style="font-size: 24px; color: green;">Google Search:</h2>
                 <a href="{google_url}" target="_blank" style="font-size: 18px;">Open Google Search Results</a>
                 <h2 style="font-size: 24px; color: green;">Taobao Search:</h2>
@@ -43,10 +44,7 @@ def main():
                 <a href="{baidu_url}" target="_blank" style="font-size: 18px;">Open Baidu Search Results</a>
             '''
             html(html_string, height=2000)
-            st.write(f"Google Search URL: {google_url}")
-            st.write(f"Taobao Search URL: {taobao_url}")
-            st.write(f"Baidu Search URL: {baidu_url}")
-            st.button("Open All Links", on_click=open_all_links)
+            
 
 if __name__ == "__main__":
     main()
