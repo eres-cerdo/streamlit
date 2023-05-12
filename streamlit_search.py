@@ -7,7 +7,7 @@ def search_on_google(query):
     return search_url
 
 def search_on_taobao(query):
-    search_url = f"https://www.taobao.com/search?q={query}"
+    search_url = f"https://s.taobao.com/search?catId=100&from=sea_1_searchbutton&page=1&q={query}&spm=a2141.241046-cn.searchbar.d_2_searchbox&tmhkh5=&type=p"
     return search_url
 
 # Streamlit app
