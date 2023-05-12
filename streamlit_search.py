@@ -22,7 +22,7 @@ def main():
                 <h2 style="font-size: 24px;">Google Search:</h2>
                 <a href="{google_url}" target="_blank" style="font-size: 18px;">Open Google Search Results</a>
                 <h2 style="font-size: 24px;">Taobao Search:</h2>
-                <a href="{taobao_url}" target="_blank" style="font-size: 18px;">Open Taobao Search Results</a>
+                <a href="{taobao_url}" target="_blank" style="font-size: 18px;">Open Taobao Search Results ({taobao_url})</a>
             '''
             html(html_string)
         else:
