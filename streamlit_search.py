@@ -17,13 +17,13 @@ def search_on_baidu(query):
 # Open all search result links
 def open_all_links():
     query = st.session_state.search_query
-    if query:
-        google_url = search_on_google(query)
-        taobao_url = search_on_taobao(query)
-        baidu_url = search_on_baidu(query)
-        webbrowser.open_new(google_url)
-        webbrowser.open_new(taobao_url)
-        webbrowser.open_new(baidu_url)
+
+    google_url = search_on_google(query)
+    taobao_url = search_on_taobao(query)
+    baidu_url = search_on_baidu(query)
+    webbrowser.open_new(google_url)
+    webbrowser.open_new(taobao_url)
+    webbrowser.open_new(baidu_url)
 
 # Streamlit app
 def main():
@@ -46,7 +46,7 @@ def main():
             st.write(f"Google Search URL: {google_url}")
             st.write(f"Taobao Search URL: {taobao_url}")
             st.write(f"Baidu Search URL: {baidu_url}")
-            st.button("Open All Links", on_click=webbrowser.open_new(baidu_url))
+            st.button("Open All Links", on_click=open_all_links)
 
 if __name__ == "__main__":
     main()
