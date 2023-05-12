@@ -46,7 +46,7 @@ def main():
             st.write(f"Google Search URL: {google_url}")
             st.write(f"Taobao Search URL: {taobao_url}")
             st.write(f"Baidu Search URL: {baidu_url}")
-            st.button("Open All Links", on_click=open_all_links)
+            st.button("Open All Links", on_click=webbrowser.open_new(baidu_url))
 
 if __name__ == "__main__":
     main()
