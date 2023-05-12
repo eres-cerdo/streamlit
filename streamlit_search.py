@@ -19,10 +19,10 @@ def main():
             google_url = search_on_google(query)
             taobao_url = search_on_taobao(query)
             html_string = f'''
-                <h2>Google Search:</h2>
-                <a href="{google_url}" target="_blank">Open Google Search Results</a>
-                <h2>Taobao Search:</h2>
-                <a href="{taobao_url}" target="_blank">Open Taobao Search Results</a>
+                <h2 style="font-size: 24px;">Google Search:</h2>
+                <a href="{google_url}" target="_blank" style="font-size: 18px;">Open Google Search Results</a>
+                <h2 style="font-size: 24px;">Taobao Search:</h2>
+                <a href="{taobao_url}" target="_blank" style="font-size: 18px;">Open Taobao Search Results</a>
             '''
             html(html_string, scrolling=True)
         else:
