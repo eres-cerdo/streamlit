@@ -42,7 +42,7 @@ def main():
                 <h2 style="font-size: 24px; color: green;">Baidu Search:</h2>
                 <a href="{baidu_url}" target="_blank" style="font-size: 18px;">Open Baidu Search Results</a>
             '''
-            html(html_string, height=600)
+            html(html_string, height=2000)
             st.write(f"Google Search URL: {google_url}")
             st.write(f"Taobao Search URL: {taobao_url}")
             st.write(f"Baidu Search URL: {baidu_url}")
