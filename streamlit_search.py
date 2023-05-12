@@ -21,9 +21,9 @@ def open_all_links():
         google_url = search_on_google(query)
         taobao_url = search_on_taobao(query)
         baidu_url = search_on_baidu(query)
-        webbrowser.open_new_tab(google_url)
-        webbrowser.open_new_tab(taobao_url)
-        webbrowser.open_new_tab(baidu_url)
+        webbrowser.open_new(google_url)
+        webbrowser.open_new(taobao_url)
+        webbrowser.open_new(baidu_url)
 
 # Streamlit app
 def main():
