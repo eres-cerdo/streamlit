@@ -34,8 +34,8 @@ def main():
             google_url = search_on_google(query)
             taobao_url = search_on_taobao(query)
             baidu_url = search_on_baidu(query)
+            st.button("Open All Links", on_click=open_all_links)
             html_string = f'''
-                st.button("Open All Links", on_click=open_all_links)
                 <h2 style="font-size: 24px; color: green;">Google Search:</h2>
                 <a href="{google_url}" target="_blank" style="font-size: 18px;">Open Google Search Results</a>
                 <h2 style="font-size: 24px; color: green;">Taobao Search:</h2>
