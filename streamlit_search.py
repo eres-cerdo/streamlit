@@ -21,10 +21,10 @@ def main():
             html_string = f'''
                 <h2 style="font-size: 24px; color: green;">Google Search:</h2>
                 <a href="{google_url}" target="_blank" style="font-size: 18px;">Open Google Search Results</a>
-                <h2 style="font-size: 24px; color: green;">Google Search:</h2>
-                <a href="{google_url}" target="_blank" style="font-size: 18px;">Open Google Search Results</a>
+                <h2 style="font-size: 24px; color: green;">Taobao Search:</h2>
+                <a href="{taobao_url}" target="_blank" style="font-size: 18px;">Open Taobao Search Results</a>
             '''
-            html(html_string)
+            html(html_string,height=600)
         else:
             st.warning("Please enter a search term.")
 
